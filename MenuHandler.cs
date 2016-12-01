@@ -15,6 +15,27 @@ namespace SmebRumble
 {
     class MenuHandler
     {
+        public static void Combo()
+        {
+            Menu menu = MenuHandler.Combo;
+        }
+        public static void Harass()
+        {
+            Menu menu = MenuHandler.Harass;
+        }
+        public static void LaneClear()
+        {
+            Menu menu = MenuHandler.LaneClear;
+        }
+        public static void JunglerClear()
+        { 
+            Menu menu = MenuHandler.JunglerClear;
+        }
+        public static void LastHit();
+        {
+            Menu menu = MenuHandler.LastHit;
+        }
+
         //preping menus for use
         public static Menu mainMenu, Combo, Harass, AutoHarass, LastHit, LaneClear, JungleClear, Misc, Drawing;
 
