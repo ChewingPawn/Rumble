@@ -28,6 +28,9 @@ namespace SmebRumble
             Q = new Spell.Active(SpellSlot.Q);
             W = new Spell.Active(SpellSlot.W);
             E = new Spell.Skillshot(SpellSlot.E, 850f, SkillShotType.Linear, 250, 2000, 60, DamageType.Magic)
+            {
+                AllowedCollisionCount = 1,
+            };
             R = new Spell.Skillshot(SpellSlot.R, 1700, SkillShotType.Linear, 250, int.MaxValue, 200, DamageType.Magic)
             {
                 Ignite = new Spell.Targeted(Rumble.GetSpellSlotFromName("SummonerDot"), 600, DamageType.True)

@@ -22,18 +22,39 @@ namespace SmebRumble
         public static void Harass()
         {
             Menu menu = MenuHandler.Harass;
+            List<Obj_AI_Base> enemies = EntityManager.Heroes.Enemies.ToList().ToObj_AI_BaseList();
+            Spell.Skillshot.BestPosition bestEPos = Program.E.GetBestLinearCastPosition(enemies);
+            if (menu.GetCheckboxValue("Use E") && bestEPos.HitNumber >= 1)
+                CastE(bestEPos.CastPosition);
         }
         public static void LaneClear()
         {
             Menu menu = MenuHandler.LaneClear;
+            List<Obj_AI_Base> enemies = EntityManager.MinionsAndMonsters.EnemyMinions.ToList().ToObj_AI_BaseList();
+            Spell.Skillshot.BestPosition bestEPos = Program.E.GetBestLinearCastPosition(enemies);
+
+            if (menu.GetCheckboxValue("Use E") && bestEPos.HitNumber >= 1)
+                CastE(bestEPos.CastPosition);
         }
         public static void JunglerClear()
         { 
             Menu menu = MenuHandler.JunglerClear;
+            List<Obj_AI_Base> enemies = EntityManager.MinionsAndMonsters.Monsters.ToList().ToObj_AI_BaseList();
+            Spell.Skillshot.BestPosition bestEPos = Program.E.GetBestLinearCastPosition(enemies);
+
+            if (menu.GetCheckboxValue("Use E") && bestEPos.HitNumber >= 1)
+                CastE(bestEPos.CastPosition);
         }
-        public static void LastHit();
+        public static void LastHit()
         {
             Menu menu = MenuHandler.LastHit;
+            List<Obj_AI_Base> enemies = EntityManager.MinionsAndMonsters.Monsters.ToList().ToObj_AI_BaseList();
+            Spell.Skillshot.BestPosition bestEPos = Program.E.GetBestLinearCastPosition(enemies);
+        }
+    public static void CastE(Vector3 pos)
+        {
+            if (Program.E.IsReady() && pos != Vector3.Zero)
+                Program.E.Cast(pos);
         }
 
         //preping menus for use
@@ -62,7 +83,7 @@ namespace SmebRumble
 
             //adds checkboxes to the rest of the menus.
             AddCheckboxes(ref Harass, "Use Q", "Use E");
-            AddCheckboxes(ref AutoHarass, "Use Q", "Use W");
+            AddCheckboxes(ref AutoHarass, "Use Q", "Use E");
             AddCheckboxes(ref LastHit, "Use E");
             AddCheckboxes(ref LaneClear, "Use Q", "Use E");
             AddCheckboxes(ref JungleClear, "Use Q", "Use E");
