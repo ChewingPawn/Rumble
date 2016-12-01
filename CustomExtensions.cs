@@ -8,7 +8,7 @@ using EloBuddy.SDK;
 using EloBuddy.SDK.Menu;
 using SharpDX;
 
-namespace SmebRumble
+namespace Rumble
 {
     static class CustomExtensions
     {
@@ -54,6 +54,20 @@ namespace SmebRumble
             if (item != null && item.CanUseItem())
                 return true;
             return false;
+        }
+        public static List<Obj_AI_Base> ToObj_AI_BaseList(this List<AIHeroClient> list)
+        {
+            List<Obj_AI_Base> returnList = new List<Obj_AI_Base>();
+            foreach (AIHeroClient unit in list.Where(a => a.MeetsCriteria()))
+                returnList.Add(unit as Obj_AI_Base);
+            return returnList;
+        }
+        public static List<Obj_AI_Base> ToObj_AI_BaseList(this List<Obj_AI_Minion> list)
+        {
+            List<Obj_AI_Base> returnList = new List<Obj_AI_Base>();
+            foreach (Obj_AI_Minion unit in list.Where(a => a.MeetsCriteria()))
+                returnList.Add(unit as Obj_AI_Base);
+            return returnList;
         }
     }
 }
