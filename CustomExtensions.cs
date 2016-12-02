@@ -8,7 +8,7 @@ using EloBuddy.SDK;
 using EloBuddy.SDK.Menu;
 using SharpDX;
 
-namespace SmebRumble
+namespace Rumble
 {
     static class CustomExtensions
     {
