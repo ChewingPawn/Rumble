@@ -61,7 +61,7 @@
  +        //this method is called every time the game processes a tick
  +        private static void Game_OnTick(EventArgs args)
  +        {
-            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo))
+            if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo)) ComboExecute();
                 ModeHandler.Combo();
             if (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear))
                 ModeHandler.JungleClear();
